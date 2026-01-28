@@ -1,1 +1,127 @@
 
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LindiMaps | Inteligjenca Hapësinore</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-slate-50 font-sans text-slate-900 overflow-x-hidden">
+
+    <div class="lang-switcher-side">
+        <a href="index.html" class="lang-item active" title="Shqip">
+            <img src="https://flagcdn.com/w40/al.png" alt="AL" class="flag-icon">
+        </a>
+        <a href="#" class="lang-item" title="English">
+            <img src="https://flagcdn.com/w40/gb.png" alt="EN" class="flag-icon">
+        </a>
+    </div>
+
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-[1000] border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 group logo-container">
+                <div class="logo-bg h-11 w-11 flex items-center justify-center bg-slate-900 rounded-xl shadow-md">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2Z" fill="white" fill-opacity="0.2"/>
+                        <path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+                        <circle class="animate-dot" cx="12" cy="11" r="2.5" fill="#3b82f6" stroke="white" stroke-width="1.2"/>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <h1 class="text-2xl font-black tracking-tighter leading-none">
+                        <span class="text-slate-900">LINDI</span><span class="logo-gradient">MAPS</span>
+                    </h1>
+                    <span class="text-[9px] uppercase tracking-[0.4em] font-bold text-slate-400 mt-1">Spatial Intelligence</span>
+                </div>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-8 font-bold text-[13px] uppercase tracking-widest text-slate-600">
+                <a href="index.html" class="text-blue-600 border-b-2 border-blue-600 pb-1">Kreu</a>
+                <a href="#" class="hover:text-blue-600 transition pb-1">Shërbime</a>
+                <a href="#" class="hover:text-blue-600 transition pb-1">Projekte</a>
+                <a href="#" class="hover:text-blue-600 transition pb-1">Rreth Nesh</a>
+                <a href="#" class="hover:text-blue-600 transition pb-1">Kontakte</a>
+                
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="h-10 w-10 flex items-center justify-center bg-[#0f172a] rounded-xl shadow-md group-hover:bg-blue-600 transition-colors">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+                            <circle class="animate-dot" cx="12" cy="11" r="2.2" fill="#3b82f6" stroke="white" stroke-width="1"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <h1 class="text-lg font-black tracking-tighter leading-none">
+                            <span class="academy-logo-text">LINDI</span><span class="academy-maps-text">MAPS</span>
+                        </h1>
+                        <span class="text-[8px] uppercase tracking-[0.3em] font-bold text-slate-400">Academy</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="md:hidden">
+                <button id="menu-btn" class="p-2 text-slate-900 focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-6 py-8 space-y-6 shadow-2xl">
+            <a href="#" class="block text-xl font-black text-blue-600">Kreu</a>
+            <a href="#" class="block text-xl font-black text-slate-700">Shërbime</a>
+            <a href="#" class="block text-xl font-black text-slate-700">Projekte</a>
+        </div>
+    </nav>
+
+    <header class="hero-bg bg-cover bg-center h-[70vh] min-h-[600px] relative flex items-center justify-center text-white text-center">
+        <div class="absolute inset-0 bg-slate-950/70 backdrop-blur-[1px]"></div>
+        <div class="relative z-10 px-6 max-w-5xl">
+            <h2 class="text-5xl md:text-8xl font-black mb-8 leading-[1.1] tracking-tighter uppercase">
+                E ardhmja përmes <span class="text-blue-400"> GIS </span>
+            </h2>
+            <p class="text-lg md:text-2xl mb-12 text-slate-300 font-light max-w-3xl mx-auto italic">
+                Konsulencë dhe zgjidhje profesionale për hartat dhe analizat tuaja hapësinore.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-5 justify-center">
+                <a href="#" class="bg-blue-600 hover:bg-blue-700 px-12 py-5 rounded-2xl font-black uppercase text-xs tracking-widest">Eksploro Shërbimet</a>
+                <a href="#" class="bg-white/10 hover:bg-white/20 px-12 py-5 rounded-2xl font-black border border-white/20 uppercase text-xs tracking-widest">Na Kontaktoni</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-24 max-w-7xl mx-auto px-6 text-center">
+        <div class="mb-16">
+            <h3 class="text-3xl md:text-5xl font-black text-slate-900 mb-4 uppercase">Analizë e Avancuar</h3>
+            <div class="h-1.5 w-20 bg-blue-600 mx-auto rounded-full"></div>
+        </div>
+        
+        <div id="map-container" class="relative">
+            <div id="satellite-scanner">
+                <div class="scanning-beam"></div>
+                <div class="beam-line"></div>
+                <div class="satellite-body">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2Z" fill="white"/><circle cx="12" cy="11" r="2.5" fill="#3b82f6"/></svg>
+                    <span class="text-[10px] font-black text-white tracking-widest uppercase">LindiMaps</span>
+                </div>
+            </div>
+            <div id="map" class="h-[500px] md:h-[700px] rounded-[3rem] shadow-2xl border-[12px] md:border-[20px] border-white overflow-hidden z-10"></div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 text-white py-24 text-center">
+        <h4 class="text-4xl font-black uppercase">LINDI<span class="text-blue-500">MAPS</span></h4>
+        <p class="text-xs text-slate-600 mt-8 uppercase font-bold tracking-widest italic">© 2024 LindiMaps Studio.</p>
+    </footer>
+
+    <button id="scroll-to-top" class="fixed bottom-8 right-8 bg-blue-600 text-white p-5 rounded-2xl shadow-2xl z-[1100]">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 15l7-7 7 7"></path></svg>
+    </button>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
