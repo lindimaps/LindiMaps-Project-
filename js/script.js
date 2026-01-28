@@ -86,3 +86,23 @@ cards.forEach(card => {
 document.addEventListener('click', () => {
     cards.forEach(c => c.classList.remove('active'));
 });
+
+// Logjika për zgjerimin e tekstit të projekteve
+document.querySelectorAll('.details-toggle').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const card = this.closest('.project-card');
+        const textElement = card.querySelector('.description-text');
+        const overlay = card.querySelector('.image-overlay');
+        
+        textElement.classList.toggle('expanded-text');
+        
+        if (textElement.classList.contains('expanded-text')) {
+            this.textContent = 'Mbyll';
+            overlay.style.background = 'linear-gradient(to top, rgba(15, 23, 42, 0.98) 0%, rgba(15, 23, 42, 0.8) 70%, rgba(15, 23, 42, 0.4) 100%)';
+        } else {
+            this.textContent = 'Detaje';
+            overlay.style.background = ''; 
+        }
+    });
+});
