@@ -63,3 +63,26 @@ scrollTopBtn.addEventListener('click', () => {
 
 // Nis animacionin kur ngarkohet faqja
 window.onload = animateSatellite;
+
+// Menaxhimi i Kartave të Shërbimeve (për Touch & Click)
+const cards = document.querySelectorAll('.service-card');
+
+cards.forEach(card => {
+    card.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isActive = card.classList.contains('active');
+        
+        // Mbyll kartat e tjera
+        cards.forEach(c => c.classList.remove('active'));
+        
+        // Hap këtë nëse nuk ishte aktive
+        if (!isActive) {
+            card.classList.add('active');
+        }
+    });
+});
+
+// Mbyll kartat nëse klikon jashtë tyre
+document.addEventListener('click', () => {
+    cards.forEach(c => c.classList.remove('active'));
+});
