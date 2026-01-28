@@ -85,3 +85,46 @@
     position: absolute; top: 50%; width: 2px; height: 80px;
     background: linear-gradient(to bottom, #3b82f6, transparent);
 }
+
+/* Service Cards Styling */
+.service-card { 
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.service-image {
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: brightness(0.7);
+}
+
+.service-card:hover .service-image,
+.service-card.active .service-image {
+    transform: scale(1.1);
+    filter: brightness(0.4);
+}
+
+.service-overlay {
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.2) 100%);
+    transition: all 0.5s ease;
+}
+
+.info-content {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover .info-content,
+.service-card.active .info-content {
+    max-height: 200px;
+    opacity: 1;
+    transform: translateY(0);
+    margin-top: 1rem;
+}
+
+.title-content { transition: transform 0.5s ease; }
+.service-card:hover .title-content { transform: translateY(-5px); }
