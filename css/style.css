@@ -128,3 +128,23 @@
 
 .title-content { transition: transform 0.5s ease; }
 .service-card:hover .title-content { transform: translateY(-5px); }
+
+/* Project Cards Styling */
+.project-card {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.image-overlay {
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.4) 50%, transparent 100%);
+    transition: all 0.5s ease;
+}
+
+/* Expansion Logic */
+.expanded-text {
+    -webkit-line-clamp: unset !important;
+    display: block !important;
+}
